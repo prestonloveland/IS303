@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ISMAREED</title>
+    <style>
+    div.LoveHeart
+    {
+    height: 5em;
+    position: relative
+    }
+    div.LoveHeart p
+    {
+    margin: 0;
+    background: white;
+    color: red;
+    font-weight: bold;
+    font-size: 150%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+    }
+    </style>
+
+
+</head>
+
+<body>
+    <h1>Welcome to the BYU Information System's Dating Site</h1>
+    <fieldset>
+        <legend style="font-weight: bolder;">Necessary Info to Find Your Spouse</legend>
+        <br>
+        <label for="lovePhrase">What is the love phrase: </label><input type="text" id="lovePhrase" autofocus> 
+        <br><br>
+        <label for="person1Name">Enter the first person's first and last name: </label><input type="text" id="person1Name">
+        <br><br>
+        <label for="person2Name">Enter the second person's first and last name: </label><input type="text" id="person2Name">
+        <br><br>
+        <input type="checkbox" id="communication"><label for="communication">We will communicate often</label>
+        <br><br>
+        <input type="checkbox" id="selfish"><label for="selfish">We will not be selfish</label>
+        <br><br>
+        <input type="checkbox" id="service"><label for="service">We will serve each other</label>
+        <br><br>
+        <input type="checkbox" id="bestFriend"><label for="bestFriend">My spouse will be my best friend</label>
+        <br><br>
+        <input type="checkbox" id="rememberGod"><label for="rememberGod">We will remember God</label>
+        <br><br>
+        <input type="button" value="Click me" onclick="lovePhrase()">
+        <input type="button" value="Reset" onclick="resetPage()">
+    </fieldset>
+    <div class="LoveHeart">
+        <p id="output"></p>
+    </div>
+
+
+    <script>
+    function lovePhrase()
+    {
+        //grab strings, make them uppercase, take out spaces
+        var slovePhrase = document.getElementById("lovePhrase").value.toUpperCase().replace(/\s+/g, '');
+        var sName1 = document.getElementById("person1Name").value.toUpperCase().replace(/\s+/g, '');
+        var sName2 = document.getElementById("person2Name").value.toUpperCase().replace(/\s+/g, '');
+        var iTotalMatches = 0;
+
+        for(let iOuterCount = 0; iOuterCount < sName1.length; iOuterCount++)
+        {
+            for(let iInnerCount = 0; iInnerCount < sName1.length; iInnerCount++)
+            {
+                if(sName1.charAt(iOuterCount) == slovePhrase.charAt(iInnerCount))
+                {
+                    iTotalMatches++;
+                }
+            }
+        }
+        for(let iOuterCount = 0; iOuterCount < sName2.length; iOuterCount++)
+        {
+            for(let iInnerCount = 0; iInnerCount < sName2.length; iInnerCount++)
+            {
+                if(sName2.charAt(iOuterCount) == slovePhrase.charAt(iInnerCount))
+                {
+                    iTotalMatches++;
+                }
+            }
+        }
+        totalValue(iTotalMatches, slovePhrase);
+    }
+    function totalValue(iTotalMatches, slovePhrase)
+    {
+        var iPower;
+        var iFactor = 1;
+
+        if(document.getElementById("communication").checked == true)
+        {
+            iFactor += .25;
+        }
+        if(document.getElementById("selfish").checked == true)
+        {
+            iFactor += .25;
+        }
+        if(document.getElementById("service").checked == true)
+        {
+            iFactor += .25;
+        }
+        if(document.getElementById("bestFriend").checked == true)
+        {
+            iFactor += .25;
+        }
+        if(document.getElementById("rememberGod").checked == true)
+        {
+            iFactor += .5;
+        }
+
+
+        iPower = Math.ceil(((iTotalMatches / slovePhrase.length) * 22) * iFactor);
+        alert(iPower);
+    }
+    function resetPage()
+    {
+        window.location.reload();
+    }
+    </script>
+
+</body>
+
+</html>
