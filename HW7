@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>ISMAREED</title>
+    <link rel="stylesheet" type="text/css" href="loading-bar.css"/>
+    <script type="text/javascript" src="loading-bar.js"></script>
     <style>
     div.LoveHeart
     {
@@ -23,6 +23,37 @@
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%)
+    }
+    .heartbox
+    {
+        background-color: red;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        margin-bottom: 100px;
+        transform: rotate(-45deg);
+        top: 500px;
+        bottom: 100px;
+        right: 500px;
+        left: 0px;
+    }
+    .ball1
+    {
+        background-color: red;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        position: absolute;
+        right: -50px;
+    }
+    .ball2
+    {
+        background-color: red;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        position: absolute;
+        top: -50px;
     }
     </style>
 
@@ -53,7 +84,9 @@
         <input type="button" value="Click me" onclick="lovePhrase()">
         <input type="button" value="Reset" onclick="resetPage()">
     </fieldset>
-    <div class="LoveHeart">
+    <div class="heartbox">
+        <div class="ball1"></div>
+        <div class="ball2"></div>
         <p id="output"></p>
     </div>
 
